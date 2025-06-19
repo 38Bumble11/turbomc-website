@@ -39,18 +39,54 @@
     </div>
   </section>
 
-  <footer>
+    <footer>
     <p>&copy; 2025 TurboMC Hosting. Not affiliated with Mojang.</p>
   </footer>
+
+  <!-- MOVE THIS HERE -->
+  <section class="payment">
+    <h2>Choose Your Plan & Pay</h2>
+    <p>We accept:</p>
+    <div class="cards">
+      <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa">
+      <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="MasterCard">
+      <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal">
+    </div>
+    <a class="pay-btn" href="#">Pay Now</a>
+  </section>
 </body>
 </html>
-<section class="payment">
-  <h2>Choose Your Plan & Pay</h2>
-  <p>We accept:</p>
-  <div class="cards">
-    <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa">
-    <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="MasterCard">
-    <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal">
-  </div>
-  <a class="pay-btn" href="#">Pay Now</a>
-</section>
+<script>
+  let selected = null;
+
+  function selectMethod(method) {
+    selected = method;
+
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => option.classList.remove('selected'));
+
+    const selectedOption = {
+      'visa': options[0],
+      'mastercard': options[1],
+      'paypal': options[2]
+    };
+
+    selectedOption[method].classList.add('selected');
+  }
+
+  function pay() {
+    if (!selected) {
+      alert('Please select a payment method!');
+      return;
+    }
+
+    // Replace these with your real payment URLs
+    const links = {
+      'visa': 'https://example.com/pay/visa',
+      'mastercard': 'https://example.com/pay/mastercard',
+      'paypal': 'https://paypal.me/yourusername/5.99'
+    };
+
+    window.open(links[selected], '_blank');
+  }
+</script>
