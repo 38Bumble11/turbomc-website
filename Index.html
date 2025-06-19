@@ -4,48 +4,6 @@
   <title>TurboMC Hosting</title>
   <link rel="stylesheet" href="style.css">
 </head>
-  .payment-options {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.option {
-  background-color: #333;
-  padding: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.2s;
-  text-align: center;
-}
-
-.option:hover {
-  transform: scale(1.05);
-}
-
-.option img {
-  width: 60px;
-}
-
-.selected {
-  border: 3px solid #00aa00;
-}
-
-.pay-btn {
-  background-color: #00aa00;
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.pay-btn:hover {
-  background-color: #007700;
-}
-
 <body>
   <header>
     <h1>TurboMC Server Hosting</h1>
@@ -81,54 +39,64 @@
     </div>
   </section>
 
-    <footer>
-    <p>&copy; 2025 TurboMC Hosting. Not affiliated with Mojang.</p>
-  </footer>
-
-  <!-- MOVE THIS HERE -->
+  <!-- Payment Section -->
   <section class="payment">
     <h2>Choose Your Plan & Pay</h2>
     <p>We accept:</p>
-    <div class="cards">
-      <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa">
-      <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="MasterCard">
-      <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal">
+    <div class="payment-options">
+      <div class="option" onclick="selectMethod('visa')">
+        <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa">
+        <p>Visa</p>
+      </div>
+      <div class="option" onclick="selectMethod('mastercard')">
+        <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="MasterCard">
+        <p>MasterCard</p>
+      </div>
+      <div class="option" onclick="selectMethod('paypal')">
+        <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal">
+        <p>PayPal</p>
+      </div>
     </div>
-    <a class="pay-btn" href="#">Pay Now</a>
+    <button class="pay-btn" onclick="pay()">Pay Now</button>
   </section>
-</body>
-</html>
-<script>
-  let selected = null;
 
-  function selectMethod(method) {
-    selected = method;
+  <footer>
+    <p>&copy; 2025 TurboMC Hosting. Not affiliated with Mojang.</p>
+  </footer>
 
-    const options = document.querySelectorAll('.option');
-    options.forEach(option => option.classList.remove('selected'));
+  <script>
+    let selected = null;
 
-    const selectedOption = {
-      'visa': options[0],
-      'mastercard': options[1],
-      'paypal': options[2]
-    };
+    function selectMethod(method) {
+      selected = method;
 
-    selectedOption[method].classList.add('selected');
-  }
+      const options = document.querySelectorAll('.option');
+      options.forEach(option => option.classList.remove('selected'));
 
-  function pay() {
-    if (!selected) {
-      alert('Please select a payment method!');
-      return;
+      const selectedOption = {
+        'visa': options[0],
+        'mastercard': options[1],
+        'paypal': options[2]
+      };
+
+      selectedOption[method].classList.add('selected');
     }
 
-    // Replace these with your real payment URLs
-    const links = {
-      'visa': 'https://example.com/pay/visa',
-      'mastercard': 'https://example.com/pay/mastercard',
-      'paypal': 'https://paypal.me/yourusername/5.99'
-    };
+    function pay() {
+      if (!selected) {
+        alert('Please select a payment method!');
+        return;
+      }
 
-    window.open(links[selected], '_blank');
-  }
-</script>
+      // Replace these with your real payment URLs
+      const links = {
+        'visa': 'https://example.com/pay/visa',
+        'mastercard': 'https://example.com/pay/mastercard',
+        'paypal': 'https://paypal.me/yourusername/5.99'
+      };
+
+      window.open(links[selected], '_blank');
+    }
+  </script>
+</body>
+</html>
