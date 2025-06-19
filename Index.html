@@ -4,6 +4,48 @@
   <title>TurboMC Hosting</title>
   <link rel="stylesheet" href="style.css">
 </head>
+  .payment-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.option {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-align: center;
+}
+
+.option:hover {
+  transform: scale(1.05);
+}
+
+.option img {
+  width: 60px;
+}
+
+.selected {
+  border: 3px solid #00aa00;
+}
+
+.pay-btn {
+  background-color: #00aa00;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pay-btn:hover {
+  background-color: #007700;
+}
+
 <body>
   <header>
     <h1>TurboMC Server Hosting</h1>
